@@ -25,7 +25,7 @@ class Packrat extends Basic {
 
 	function packhas( $key, $pos ) {
 		$pos *= 3 ;
-		return isset( $this->packstate[$key] ) && $this->packstate[$key][$pos] != "\xFF" ;
+		return isset( $this->packstate[$key][$pos] ) && $this->packstate[$key][$pos] != "\xFF" ;
 	}
 
 	function packread( $key, $pos ) {
