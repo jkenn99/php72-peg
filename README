@@ -1,0 +1,6 @@
+This repo is just a clone of https://github.com/hafriedlander/php-peg project
+
+Changes to the original project:
+  - a minor fix in order to avoid PHP 7.2 warnings
+  
+  
