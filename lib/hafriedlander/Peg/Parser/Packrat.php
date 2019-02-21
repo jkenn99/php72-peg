@@ -16,9 +16,10 @@ class Packrat extends Basic {
 		parent::__construct( $string ) ;
 
 		$max = unpack( 'N', "\x00\xFD\xFF\xFF" ) ;
-		if ( strlen( $string ) > $max[1] ) user_error( 'Attempting to parse string longer than Packrat Parser can handle', E_USER_ERROR ) ;
+		$len = strlen( $string ) + 1;
+		if ( $len > $max[1] ) user_error( 'Attempting to parse string longer than Packrat Parser can handle', E_USER_ERROR ) ;
 
-		$this->packstatebase = str_repeat( "\xFF", strlen( $string )*3 ) ;
+		$this->packstatebase = str_repeat( "\xFF", $len*3 ) ;
 		$this->packstate = array() ;
 		$this->packres = array() ;
 	}
