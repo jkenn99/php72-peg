@@ -26,7 +26,7 @@ class Rule extends PHPWriter {
 	static $argument_rx = '@
 	( [^=]+ )    # Name
 	=            # Seperator
-	"([^"]*)"   # Variable
+	"([^"]*)"    # Variable
 	(,|$)
 	@x';
 
