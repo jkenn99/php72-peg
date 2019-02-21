@@ -26,7 +26,7 @@ class Rule extends PHPWriter {
 	static $argument_rx = '@
 	( [^=]+ )    # Name
 	=            # Seperator
-	( [^=,]+ )   # Variable
+	"([^"]*)"   # Variable
 	(,|$)
 	@x';
 
@@ -77,7 +77,7 @@ class Rule extends PHPWriter {
 			preg_match_all(self::$argument_rx, $specmatch['arguments'], $arguments, PREG_SET_ORDER);
 
 			foreach ($arguments as $argument){
-				$this->arguments[trim($argument[1])] = trim($argument[2]);
+				$this->arguments[trim($argument[1])] = $argument[2];
 			}
 		}
 
@@ -135,7 +135,7 @@ class Rule extends PHPWriter {
 		((\\\\\\\\)*\\\\/) # Escaped \/, making sure to catch all the \\ first, so that we dont think \\/ is an escaped /
 		|
 		[^/]               # Anything except /
-	)*/@xu' ;
+	)*/[i]*@xu' ;
 
 	function tokenize( $str, &$tokens, $o = 0 ) {
 		$length = strlen($str);
